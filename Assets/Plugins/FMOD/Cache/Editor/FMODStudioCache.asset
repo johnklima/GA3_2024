@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: GA3_FMOD_PROJ/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638459395094384761
+  lastModified: 638475820524355885
   FileSizes:
   - Name: Desktop
     Value: 802
@@ -35,7 +35,7 @@ MonoBehaviour:
   Path: GA3_FMOD_PROJ/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638459395094374789
+  lastModified: 638475820524355885
   FileSizes:
   - Name: Desktop
     Value: 2028896
@@ -90,7 +90,7 @@ MonoBehaviour:
   - {fileID: -2127033119156871046}
   StringsBanks:
   - {fileID: -7140670543859123641}
-  cacheTime: 638459395094384761
+  cacheTime: 638475820524355885
   cacheVersion: 131603
 --- !u!114 &6193554344992783054
 MonoBehaviour:

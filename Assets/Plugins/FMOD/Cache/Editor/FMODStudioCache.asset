@@ -74,6 +74,33 @@ MonoBehaviour:
   - Name: Desktop
     Value: 846
   Exists: 1
+--- !u!114 &-6792505573962769505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/mary options
+  m_EditorClassIdentifier: 
+  Path: event:/mary options
+  Guid:
+    Data1: 1935863086
+    Data2: 1257703811
+    Data3: 300635559
+    Data4: 69978785
+  Banks:
+  - {fileID: 2556284953441942759}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 309410
 --- !u!114 &-2127033119156871046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,33 +148,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 3506
---- !u!114 &-526243993782671486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music
-  m_EditorClassIdentifier: 
-  Path: event:/Music
-  Guid:
-    Data1: -2130160522
-    Data2: 1271668640
-    Data3: -727469389
-    Data4: -350277137
-  Banks:
-  - {fileID: 2556284953441942759}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 185699
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,14 +165,15 @@ MonoBehaviour:
   - {fileID: 2556284953441942759}
   EditorEvents:
   - {fileID: 5441426001826039454}
-  - {fileID: -526243993782671486}
   - {fileID: -7440389825415469631}
+  - {fileID: -6792505573962769505}
+  - {fileID: 8989874697862519469}
   EditorParameters: []
   MasterBanks:
   - {fileID: 2556284953441942759}
   StringsBanks:
   - {fileID: 4296159311320833701}
-  cacheTime: 638477335108319216
+  cacheTime: 638482569099165235
   cacheVersion: 131603
 --- !u!114 &2556284953441942759
 MonoBehaviour:
@@ -189,10 +190,10 @@ MonoBehaviour:
   Path: GA3_FMOD_PROJ/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638477335108259419
+  lastModified: 638482569099155077
   FileSizes:
   - Name: Desktop
-    Value: 2769728
+    Value: 4674496
   Exists: 1
 --- !u!114 &4296159311320833701
 MonoBehaviour:
@@ -209,10 +210,10 @@ MonoBehaviour:
   Path: GA3_FMOD_PROJ/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638477335108319216
+  lastModified: 638482569099165235
   FileSizes:
   - Name: Desktop
-    Value: 846
+    Value: 900
   Exists: 1
 --- !u!114 &5441426001826039454
 MonoBehaviour:
@@ -261,6 +262,33 @@ MonoBehaviour:
     Data4: -350277137
   Banks:
   - {fileID: -2127033119156871046}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 185699
+--- !u!114 &8989874697862519469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/music
+  m_EditorClassIdentifier: 
+  Path: event:/music
+  Guid:
+    Data1: -2130160522
+    Data2: 1271668640
+    Data3: -727469389
+    Data4: -350277137
+  Banks:
+  - {fileID: 2556284953441942759}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1

@@ -96,11 +96,14 @@ MonoBehaviour:
   - {fileID: 2556284953441942759}
   IsStream: 1
   Is3D: 0
-  IsOneShot: 1
-  Parameters: []
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -522996748989653754}
+  - {fileID: 5582471397192705682}
+  - {fileID: 509283042368152718}
   MinDistance: 1
   MaxDistance: 20
-  Length: 345410
+  Length: 309410
 --- !u!114 &-2127033119156871046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +151,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 3506
+--- !u!114 &-522996748989653754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/marys lamb/Start
+  m_EditorClassIdentifier: 
+  Name: Start
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3627373233
+    data2: 1987630244
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,8 +200,32 @@ MonoBehaviour:
   - {fileID: 2556284953441942759}
   StringsBanks:
   - {fileID: 4296159311320833701}
-  cacheTime: 638483459993730832
+  cacheTime: 638483616740653922
   cacheVersion: 131603
+--- !u!114 &509283042368152718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/marys lamb/Parameter1
+  m_EditorClassIdentifier: 
+  Name: Parameter1
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1164555582
+    data2: 4132637215
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &2556284953441942759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,10 +241,10 @@ MonoBehaviour:
   Path: GA3_FMOD_PROJ/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638483459993715765
+  lastModified: 638483616740623801
   FileSizes:
   - Name: Desktop
-    Value: 4674016
+    Value: 4679360
   Exists: 1
 --- !u!114 &4296159311320833701
 MonoBehaviour:
@@ -210,10 +261,10 @@ MonoBehaviour:
   Path: GA3_FMOD_PROJ/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638483459993730832
+  lastModified: 638483616740653922
   FileSizes:
   - Name: Desktop
-    Value: 898
+    Value: 1042
   Exists: 1
 --- !u!114 &5441426001826039454
 MonoBehaviour:
@@ -242,6 +293,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 3506
+--- !u!114 &5582471397192705682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/marys lamb/Parameter0
+  m_EditorClassIdentifier: 
+  Name: Parameter0
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2792539326
+    data2: 2970226312
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &6193554344992783054
 MonoBehaviour:
   m_ObjectHideFlags: 0

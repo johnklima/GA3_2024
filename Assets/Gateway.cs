@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Gateway : MonoBehaviour
 {
+    public FMODUnity.StudioEventEmitter emitter;
 
     public NarrativeRoot narrativeRoot;
     public int index;
@@ -23,9 +24,16 @@ public class Gateway : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            Debug.Log("Player trigger " + transform.name);
+            Debug.Log("Player trigger enter" + transform.name);
             narrativeRoot.Choice(index);
+            StartCoroutine(Countdown(0.25f));
 
         }
+    }
+    IEnumerator Countdown(float time)
+    {
+        Debug.Log("countdown");
+        yield return new WaitForSeconds(time);
+        emitter.SetParameter("Parameter" + index, 0);
     }
 }

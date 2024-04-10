@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-
+using UnityEngine.UI;
 /* This module handles dialog tree behaviour. To enable re-entrant dialog, the DialogElement
  * has an additional reference, which one could imagine as just another child empty in the
  * scene graph. As a scene graphic is "acyclic" we need to provide an "out point" to somewhere else
@@ -13,9 +13,16 @@ using UnityEngine;
 public class NarrativeRoot : MonoBehaviour
 {
     public Transform currentDecision;  //our current position in the tree    
-
+    public Button[] buttons;  
     private void Start()
     {
+
+        //turn off all buttons
+        for(int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].gameObject.SetActive(false); 
+        }
+
         DialogElement de = currentDecision.GetComponent<DialogElement>();
         de.RefreshText();
 
@@ -30,7 +37,14 @@ public class NarrativeRoot : MonoBehaviour
 
     public void Choice(int index)   //index maps to the button that was pressed
     {                               //or some other mechanism that made a choice
-        
+
+        //turn off all buttons
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].gameObject.SetActive(false);
+        }
+
+
         //chose the branch assuming it exists
         if (currentDecision.childCount > index)
         {
@@ -48,9 +62,12 @@ public class NarrativeRoot : MonoBehaviour
                 {
                     t.GetComponent<DialogElement>().RefreshButton();
                 }
-                //and it gets even more crazy, show the answer as a question
-                //de.nextNode.GetComponent<DialogElement>().RefreshText();
+
             }
+
+            //We have a new currentDecision, therefor we need to look at it, to prep
+            //the interface for a new batch of answers.
+
             //WOW!! in the case of no kids, but a nextNode, make the nextNode current
             //as each node can be both a question and an answer, or maybe neither
             if (currentDecision.childCount == 0 && de.nextNode)

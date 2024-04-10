@@ -11,6 +11,7 @@ public class DialogElement : MonoBehaviour
     public Transform nextNode;
 
     public Text buttonText;
+    public GameObject geometry;
 
     
 
@@ -18,13 +19,23 @@ public class DialogElement : MonoBehaviour
     {
         //keep telling the story!
         textElement.text = textElement.text + " " + elementText;
+
+        if(geometry != null)
+        {
+            geometry.SetActive(true);
+        }
+        
         
     }
     public void RefreshButton()
     {
+        //the answer is the next question!
         if(buttonText != null)
         {
             buttonText.text = elementText;
+            buttonText.transform.parent.gameObject.SetActive(true);
+
+
         }
         
     }

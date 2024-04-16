@@ -22,10 +22,14 @@ public class Gateway : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
+        //FMOD handles parameter on from inspector
         if(other.tag == "Player")
         {
             Debug.Log("Player trigger enter" + transform.name);
             narrativeRoot.Choice(index);
+
+            //after 1/4 second, turn param off
             StartCoroutine(Countdown(0.25f));
 
         }

@@ -33,6 +33,9 @@ public class PlayerController : MonoBehaviour
     [Header("Camera Setting")]
     public bool bUseCameraControlRotation; // makes it so the rotation of the capsule follows the camera, Turning it off will make it so you can rotate with your camera without your character turning too.
 
+    [Header("PlayerAnimator")]
+	public PlayerAnimator playerAnimator;
+
     void Start()
 	{
 		cameraT = Camera.main.transform; // Camera initial transform cache
@@ -46,6 +49,7 @@ public class PlayerController : MonoBehaviour
         Vector2 inputDir = input.normalized;
         bool running = Input.GetKey(KeyCode.LeftShift);
         
+	
         // Movement function using the input detection above.
         Move(inputDir, running);
 
@@ -53,6 +57,20 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
 	        Jump();
+        }
+
+		Animate(input);
+    }
+	void Animate(Vector2 _input)
+	{
+		if (Mathf.Abs(_input.y) > 0 )
+		{
+
+            playerAnimator.Walk();
+        }
+        else
+        {
+			playerAnimator.Idle();
         }
     }
 
@@ -85,14 +103,16 @@ public class PlayerController : MonoBehaviour
 			case true:
 
 			isMoving = true;
+			
 
 			break;
 
 			case false:
 
 			isMoving = false;
+            
 
-			break;
+            break;
 		}
 
 	}
@@ -120,4 +140,7 @@ public class PlayerController : MonoBehaviour
 		}
 		return smoothTime / airControlPercent;
 	}
+
+
+
 }

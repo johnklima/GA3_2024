@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Character Movement Check")]
     public bool isMoving;
+    public bool isMovingLateral;
 
     [Header("Camera Setting")]
     public bool bUseCameraControlRotation; // makes it so the rotation of the capsule follows the camera, Turning it off will make it so you can rotate with your camera without your character turning too.
@@ -118,9 +119,10 @@ public class PlayerController : MonoBehaviour
 		currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity, GetModifiedSmoothTime(speedSmoothTime));
 
 		if (velocityY > -5) { velocityY += Time.deltaTime * gravity; }
-		Vector3 velocity = transform.forward * currentSpeed;// + Vector3.up * velocityY;
+		Vector3 velocity = transform.forward * currentSpeed + Vector3.up * velocityY;
+		
 
-		controller.Move(velocity * Time.deltaTime);
+        controller.Move(velocity * Time.deltaTime);
 		currentSpeed = new Vector2(controller.velocity.x, controller.velocity.z).magnitude;
 
 		switch (currentSpeed != 0)
@@ -140,7 +142,16 @@ public class PlayerController : MonoBehaviour
             break;
 		}
 
-	}
+        Vector3 velolat = transform.forward * currentSpeed;
+		if(velolat.magnitude > 0)	
+		{ 
+			isMovingLateral = true;
+		}
+		else 
+		{
+            isMovingLateral = false;
+        }
+    }
 
 	public void Jump()
 	{

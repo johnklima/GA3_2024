@@ -2,43 +2,25 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using FMODUnity;
 
 public class Footsteps : MonoBehaviour
 {
-    public PlayerController controller;
-    public GameObject footstep;    
-   // public FMODUnity.StudioEventEmitter emitter;
-    public float hitDistance = 0.6f;
-    
-    FMOD.Studio.EventInstance footInstance;
+    public PlayerController controller;                 //set this in editor!!!
+    public GameObject [] footsteps = new GameObject[4]; //set this in editor!!!
+    public float hitDistance = 10;
+    public GameObject theFootstep;                      //set this in editor!!!
 
     private void Start()
     {
-        footInstance = RuntimeManager.CreateInstance("event:/footstep");
-        FMOD.ATTRIBUTES_3D attributes = new FMOD.ATTRIBUTES_3D();
-        attributes.position.x = transform.position.x;
-        attributes.position.y = transform.position.x;
-        attributes.position.z = transform.position.x;
-
-        footInstance.set3DAttributes(attributes);
-        footInstance.start();
-        footInstance.setPaused(false);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        FMOD.ATTRIBUTES_3D attributes = new FMOD.ATTRIBUTES_3D();
-        attributes.position.x = transform.position.x;
-        attributes.position.y = transform.position.y;
-        attributes.position.z = transform.position.z;
-
-        footInstance.set3DAttributes(attributes);
-
         //only do this if moving
-        if (controller.isMoving)
+        if (controller.isMovingLateral)
         {
             // Bit shift the index of the layer (8) to get a bit mask
             int layerMask = 1 << 8;
@@ -51,36 +33,63 @@ public class Footsteps : MonoBehaviour
             // Does the ray intersect any objects excluding the player layer
             if (Physics.Raycast(transform.position, Vector3.down, out hit, 10, layerMask))
             {
-                if (hit.distance < hitDistance)
-                {
-                    Debug.Log("hit");
-                    //footstep.SetActive(true);
+                if (hit.distance < hitDistance)                {
+                    
+                    if (hit.transform.tag == "grass")          //grass
+                    {
+                        ChangeSound(0);
+                    }
+                    else if (hit.transform.tag == "dirt")    //dirt 
+                    {
+                        ChangeSound(1);
+                    }
+                    else if (hit.transform.tag == "rock")    //rock
+                    {
+                        ChangeSound(2);
+                    }
+                    else if (hit.transform.tag == "water")   //water
+                    {
+                        ChangeSound(3);
+                    }
+
+                    Debug.Log(hit.transform.tag);
+
+                    
                  
-                    footInstance.setPaused(false);
                 }
 
+            }
+            else
+            {
+                theFootstep.SetActive(false);
             }
 
         }
         else
         {
-            footInstance.setPaused(true);
+            theFootstep.SetActive(false);
 
         }
         
-        //find distance between foot and ground prolly via raycast
-
-        //get material of the ground and/or use different layers by type
+        
 
 
     }
+    void ChangeSound(int index)
+    {
 
+        if (theFootstep != footsteps[index])
+        {
+            theFootstep.SetActive(false);
+        }
+        footsteps[index].SetActive(true);
+        theFootstep = footsteps[index];
+    
+    }
     IEnumerator Countdown(float time)
     {
         Debug.Log("countdown");        
         yield return new WaitForSeconds(time);
-        footstep.SetActive(false);
-
-
+       
     }
 }

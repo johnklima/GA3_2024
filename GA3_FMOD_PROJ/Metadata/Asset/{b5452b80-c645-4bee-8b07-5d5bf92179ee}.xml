@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{b5452b80-c645-4bee-8b07-5d5bf92179ee}">
+		<property name="assetPath">
+			<value>InMotionAudio - The Forest/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{540d44c1-e340-45cc-9e5f-810e58dc7b7d}</destination>
+		</relationship>
+	</object>
+</objects>

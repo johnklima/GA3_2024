@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerAnimator : MonoBehaviour
 {
     Animator anim;
-    AnimatorController animController;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -23,34 +23,46 @@ public class PlayerAnimator : MonoBehaviour
 
     public bool Walk()
     {
+        ResetAnimParams();
 
-        anim.SetBool("Walk", true);
-        anim.SetBool("Idle", false);
-
-        
+        anim.SetBool("Walk", true);        
         return true;
 
     }
 
     public bool Idle()
     {
-        anim.SetBool("Sneaking", false);
-        anim.SetBool("Walk", false);
-        anim.SetBool("Idle", true);
-        
+        ResetAnimParams();
+
+        anim.SetBool("Idle", true);        
         return true;
 
     }
 
     public bool Sneak()
     {
-        anim.SetBool("Walk", false);
-        anim.SetBool("Idle", false);
+        ResetAnimParams();
 
-        anim.SetBool("Sneak", true);
+        anim.SetBool("Sneak", true);        
         return true;
 
     }
 
+    public bool Run()
+    {
+        ResetAnimParams();
 
+        anim.SetBool("Run", true);
+        return true;
+
+    }
+
+    public void ResetAnimParams()
+    {
+        anim.SetBool("Walk", false);
+        anim.SetBool("Idle", false);
+        anim.SetBool("Sneak", false);
+        anim.SetBool("Run", false);
+
+    }
 }

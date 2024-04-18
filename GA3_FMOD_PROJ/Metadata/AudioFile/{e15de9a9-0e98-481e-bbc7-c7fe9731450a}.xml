@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{e15de9a9-0e98-481e-bbc7-c7fe9731450a}">
+		<property name="assetPath">
+			<value>InMotionAudio - Submerge/WATRMvmt_WaterRockMovement04_InMotionAudio_Submerge.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>3.2151145833333334</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{540d44c1-e340-45cc-9e5f-810e58dc7b7d}</destination>
+		</relationship>
+	</object>
+</objects>

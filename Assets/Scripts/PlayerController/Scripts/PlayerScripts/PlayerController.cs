@@ -48,10 +48,10 @@ public class PlayerController : MonoBehaviour
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         Vector2 inputDir = input.normalized;
         bool running = Input.GetKey(KeyCode.LeftShift);
-        
+        bool sneaking = Input.GetKey(KeyCode.LeftControl);
 	
         // Movement function using the input detection above.
-        Move(inputDir, running);
+        Move(inputDir, running, sneaking);
 
         // Jump handling, got its own funciton as its easier to transition to an animation character this way.
         if (Input.GetKey(KeyCode.Space))
@@ -59,14 +59,30 @@ public class PlayerController : MonoBehaviour
 	        Jump();
         }
 
-		Animate(input);
+		Animate(input, running, sneaking);
     }
-	void Animate(Vector2 _input)
+	void Animate(Vector2 _input, bool _run, bool _sneak)
 	{
-		if (Mathf.Abs(_input.y) > 0 )
-		{
+		if(playerAnimator == null) 
+		{ 
+			return; 
+		}
 
-            playerAnimator.Walk();
+		if (_input.magnitude > 0 )
+		{
+			if (_run) 
+			{ 
+				playerAnimator.Run(); 
+			}
+			else if (_sneak) 
+			{ 
+				playerAnimator.Sneak(); 
+			}
+			else 
+			{ 
+				playerAnimator.Walk();
+			}
+            
         }
         else
         {
@@ -74,7 +90,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-	void Move(Vector2 inputDir, bool running)
+	void Move(Vector2 inputDir, bool running, bool sneaking)
 	{
 		if (inputDir != Vector2.zero && !bUseCameraControlRotation)
 		{
@@ -88,12 +104,21 @@ public class PlayerController : MonoBehaviour
 			transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref turnSmoothVelocity, GetModifiedSmoothTime(turnSmoothTime));
 		}
 		
-		float targetSpeed = ((running) ? runSpeed : walkSpeed) * inputDir.magnitude;
+		float targetSpeed =  walkSpeed * inputDir.magnitude;  //default
+		
+		if (running) 
+		{
+            targetSpeed = runSpeed * inputDir.magnitude;
+        }
+		if (sneaking) 
+		{
+            targetSpeed = 0.25f * walkSpeed * inputDir.magnitude; 
+		}
 		
 		currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity, GetModifiedSmoothTime(speedSmoothTime));
 
 		if (velocityY > -5) { velocityY += Time.deltaTime * gravity; }
-		Vector3 velocity = transform.forward * currentSpeed + Vector3.up * velocityY;
+		Vector3 velocity = transform.forward * currentSpeed;// + Vector3.up * velocityY;
 
 		controller.Move(velocity * Time.deltaTime);
 		currentSpeed = new Vector2(controller.velocity.x, controller.velocity.z).magnitude;

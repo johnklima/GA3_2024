@@ -7,7 +7,7 @@ public class TeleportConditional : MonoBehaviour
 {
 
     public Transform destination;
-    public Transform[] conditions = new Transform[3];
+    public Transform[] conditions = new Transform[3];  //just going to say there are 3
     public int condCount = 0;
     public bool teleport = false;
     Transform player;
@@ -23,11 +23,9 @@ public class TeleportConditional : MonoBehaviour
             //get the player component
             PlayerAchievments achs = player.GetComponent<PlayerAchievments>();
             //stuff this cube tranform, into the list of player achievments
-            achs.achievments[achs.emptyAchieve] = transform;
-            //increment the next empty achs.
-            achs.emptyAchieve++;
+            achs.AddAchievment(transform);
 
-            bool sendItAway = false;   //are we ready to hide the trigger?
+            bool sendItAway = false;   //are we ready to hide this trigger?
 
             //are all conditions met?
             condCount = 0;

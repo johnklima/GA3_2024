@@ -177,6 +177,13 @@ public class PlayerController : MonoBehaviour
 		return smoothTime / airControlPercent;
 	}
 
+	public void Teleport(Transform destination) 
+	{
+		//place the player
+        transform.SetPositionAndRotation(destination.position, destination.rotation);
+        //and the camera (should prolly use
+		cameraT.GetComponent<CameraContoller>().CameraReset(destination.position, destination.rotation);
 
+    }
 
 }

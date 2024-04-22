@@ -42,6 +42,7 @@ public class CameraContoller : MonoBehaviour
 
     private bool isPlayerMoving;
     private PlayerController playerController;
+    private bool isReset = false;
 
     // Start is called before the first frame update
     void Start()
@@ -65,8 +66,16 @@ public class CameraContoller : MonoBehaviour
         CameraBreathMovement();
     }
 
-    private void LateUpdate() {
+    private void LateUpdate() 
+    {
+        if (isReset)
+        {
+            isReset = false;
+        }
+
         CameraMovement();
+
+       
     }
 
     void HeadBob(float pos_z, float pos_x_intensity, float pos_y_intensity)
@@ -90,16 +99,36 @@ public class CameraContoller : MonoBehaviour
     {
         if(breathingFrequency > 0)
         {
-                    if(playerController.isMoving)
+            if(playerController.isMoving)
+            {
+                HeadBob(breathingFrequency, runningCameraSideOffsetSlider,runningCameraUpDownOffsetSlider);
+                breathingFrequency += Time.deltaTime;
+            }
+            else
+            {
+                HeadBob(breathingFrequency, cameraSideOffsetSlider, cameraUpDownOffsetSlider);
+                breathingFrequency += Time.deltaTime;
+            }
+        }
+    }
+
+    public void CameraReset(Vector3 pos, Quaternion rot)
+    {
+
+        transform.position = pos;
+        transform.rotation = rot;
+
+        if (lockCursor)
         {
-            HeadBob(breathingFrequency, runningCameraSideOffsetSlider,runningCameraUpDownOffsetSlider);
-            breathingFrequency += Time.deltaTime;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
-        else
-        {
-            HeadBob(breathingFrequency, cameraSideOffsetSlider, cameraUpDownOffsetSlider);
-            breathingFrequency += Time.deltaTime;
-        }
-        }
+
+        Vector3 eul = transform.eulerAngles;
+        currentRotation = eul;
+        pitch = eul.x;
+        yaw = eul.y;
+        isReset = true;
+
     }
 }

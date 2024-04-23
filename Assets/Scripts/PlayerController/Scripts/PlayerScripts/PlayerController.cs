@@ -181,7 +181,7 @@ public class PlayerController : MonoBehaviour
 	{
 		//place the player
         transform.SetPositionAndRotation(destination.position, destination.rotation);
-        //and the camera (should prolly use
+        //and the camera 
 		cameraT.GetComponent<CameraContoller>().CameraReset(destination.position, destination.rotation);
 
     }

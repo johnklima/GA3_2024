@@ -61,13 +61,13 @@ public class Footsteps : MonoBehaviour
             }
             else
             {
-                theFootstep.SetActive(false);
+                ChangeSound(-1);
             }
 
         }
         else
         {
-            theFootstep.SetActive(false);
+            ChangeSound(-1);
 
         }
         
@@ -77,12 +77,22 @@ public class Footsteps : MonoBehaviour
     }
     void ChangeSound(int index)
     {
+        //neg one means no sound
+        if(index == -1)
+        {
+            theFootstep.SetActive(false); //set curent to off
+            return;                       //exit
+        }
 
+        //if the current is not the new sound
         if (theFootstep != footsteps[index])
         {
+            //turn off the old sound
             theFootstep.SetActive(false);
         }
+        //turn on this sound
         footsteps[index].SetActive(true);
+        //set current sound to this sound
         theFootstep = footsteps[index];
     
     }

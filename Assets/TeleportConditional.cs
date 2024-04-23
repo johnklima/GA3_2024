@@ -90,6 +90,7 @@ public class TeleportConditional : MonoBehaviour
             Debug.Log("lets teleport!!");
             player.GetComponent<PlayerController>().Teleport(destination);
             teleport = false;
+            transform.gameObject.SetActive(false);
 
         }
     }

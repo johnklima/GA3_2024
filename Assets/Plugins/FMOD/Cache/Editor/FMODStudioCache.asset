@@ -130,7 +130,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 600
+  Length: 300
 --- !u!114 &-2127033119156871046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,7 +232,7 @@ MonoBehaviour:
   - {fileID: 2556284953441942759}
   StringsBanks:
   - {fileID: 4296159311320833701}
-  cacheTime: 638491237305473519
+  cacheTime: 638494684711528351
   cacheVersion: 131603
 --- !u!114 &509283042368152718
 MonoBehaviour:
@@ -284,7 +284,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 340
+  Length: 300
 --- !u!114 &2556284953441942759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,10 +300,10 @@ MonoBehaviour:
   Path: GA3_FMOD_PROJ/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638491237305453478
+  lastModified: 638494684711483046
   FileSizes:
   - Name: Desktop
-    Value: 5884640
+    Value: 5885056
   Exists: 1
 --- !u!114 &4296159311320833701
 MonoBehaviour:
@@ -320,7 +320,7 @@ MonoBehaviour:
   Path: GA3_FMOD_PROJ/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638491237305473519
+  lastModified: 638494684711528351
   FileSizes:
   - Name: Desktop
     Value: 1220
@@ -351,7 +351,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 480
+  Length: 300
 --- !u!114 &5441426001826039454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -483,7 +483,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 400
+  Length: 300
 --- !u!114 &8989874697862519469
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,6 +10,9 @@ public class Footsteps : MonoBehaviour
     public float hitDistance = 10;
     public GameObject theFootstep;                      //set this in editor!!!
 
+    public float footTimer;
+    
+
     private void Start()
     {
         
@@ -22,6 +25,8 @@ public class Footsteps : MonoBehaviour
         //only do this if moving
         if (controller.isMovingLateral)
         {
+
+
             // Bit shift the index of the layer (8) to get a bit mask
             int layerMask = 1 << 8;
 
@@ -78,23 +83,49 @@ public class Footsteps : MonoBehaviour
     void ChangeSound(int index)
     {
         //neg one means no sound
-        if(index == -1)
+        if(index == -1 )
         {
-            theFootstep.SetActive(false); //set curent to off
+            theFootstep.SetActive(false); //set curent to off            
+            footTimer = Time.time;            
             return;                       //exit
         }
 
-        //if the current is not the new sound
-        if (theFootstep != footsteps[index])
+        //if the current is not the new sound, or it is not playing
+        if (theFootstep != footsteps[index] || theFootstep.activeInHierarchy == false)
         {
-            //turn off the old sound
+            //turn off the old sound if it is on
             theFootstep.SetActive(false);
+            //set foot timer
+            footTimer = Time.time;
         }
         //turn on this sound
         footsteps[index].SetActive(true);
         //set current sound to this sound
         theFootstep = footsteps[index];
-    
+
+        //now check move speed for on/off toggle (I could also ask the animator what is playing)
+        if (controller.currentSpeed < 2.0f)
+        {
+            if(Time.time - footTimer > 1.0f )
+            {
+                ChangeSound(-1);
+            }
+        }
+        else if (controller.currentSpeed < 6.0f)
+        {
+            if (Time.time - footTimer > 0.5f)
+            {
+                ChangeSound(-1);
+            }
+        }
+        else if (controller.currentSpeed < 10.0f)
+        {
+            if (Time.time - footTimer > 0.25f)
+            {
+                ChangeSound(-1);
+            }
+        }
+
     }
     IEnumerator Countdown(float time)
     {

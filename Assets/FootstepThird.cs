@@ -54,6 +54,7 @@ public class FootstepThird : MonoBehaviour
                     {
                        // footSoundInstance = FMODUnity.RuntimeManager.CreateInstance("event:/grass");
                         footSoundInstance.start();
+                        
                     }
                     /*
                     if (hit.transform.tag == "grass")         //grass

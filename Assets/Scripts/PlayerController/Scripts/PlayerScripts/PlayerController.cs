@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     [Header("Extra Control (Usually Fine at 0 Though)")]
 	public float speedSmoothTime = 0.1f;
 	float speedSmoothVelocity;
-	float currentSpeed;
+	public float currentSpeed;
 	float velocityY;
 
 	Transform cameraT;

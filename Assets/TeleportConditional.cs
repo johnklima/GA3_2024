@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Search;
 using UnityEngine;
 
 public class TeleportConditional : MonoBehaviour
@@ -58,40 +55,38 @@ public class TeleportConditional : MonoBehaviour
                     //controller, I need to teleport the body. I don't rember this 
                     //as a requirement in the past... hmmm, right camera drives player
                     //so I have to handle the teleport AFTER the camera does its usual thing
-                    teleport = true;
+                    player.GetComponent<PlayerController>().Teleport(destination);
 
                 }
 
             }
-            
-            if (conditions.Length == 0) 
+            if (destination && conditions.Length == 0)
+            {
+                Debug.Log("have destination");
+                //gameplay issue, depending upon what is controlling my player
+                //move her there, but do I have to tweek it? with this player
+                //controller, I need to teleport the body. I don't rember this 
+                //as a requirement in the past... hmmm, right camera drives player
+                //so I have to handle the teleport AFTER the camera does its usual thing
+                player.GetComponent<PlayerController>().Teleport(destination);
+
+            }
+
+            if (conditions.Length == 0)
             {
                 sendItAway = true;   //this one deos not have any conditions, so just send it
             }
 
 
-            if (sendItAway)            
+            if (sendItAway)
             {
                 //send it away - send it to hell, IF all conditions met. (it might have none)
                 transform.position = new Vector3(transform.position.x, -666.0f, transform.position.z);
                 //transform.gameObject.SetActive(false);  //to be or not to be?? best keep it active
-                                                          //for at least one frame, to get that late update
+                //for at least one frame, to get that late update
             }
 
         }
     }
 
-    private void LateUpdate()
-    {
-        //needs to be in late update so the "normal" camera stuff happens, and then it is
-        //set up for the next frame.
-        if (teleport)
-        {
-            Debug.Log("lets teleport!!");
-            player.GetComponent<PlayerController>().Teleport(destination);
-            teleport = false;
-            transform.gameObject.SetActive(false);
-
-        }
-    }
 }

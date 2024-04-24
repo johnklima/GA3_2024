@@ -86,7 +86,7 @@ public class Footsteps : MonoBehaviour
         if(index == -1 )
         {
             theFootstep.SetActive(false); //set curent to off            
-            footTimer = Time.time;            
+            footTimer = Time.time;        //reset timer    
             return;                       //exit
         }
 
@@ -98,6 +98,7 @@ public class Footsteps : MonoBehaviour
             //set foot timer
             footTimer = Time.time;
         }
+
         //turn on this sound
         footsteps[index].SetActive(true);
         //set current sound to this sound
@@ -106,6 +107,7 @@ public class Footsteps : MonoBehaviour
         //now check move speed for on/off toggle (I could also ask the animator what is playing)
         if (controller.currentSpeed < 2.0f)
         {
+            //sneak time
             if(Time.time - footTimer > 1.0f )
             {
                 ChangeSound(-1);
@@ -113,6 +115,7 @@ public class Footsteps : MonoBehaviour
         }
         else if (controller.currentSpeed < 6.0f)
         {
+            //walk time
             if (Time.time - footTimer > 0.5f)
             {
                 ChangeSound(-1);
@@ -120,6 +123,7 @@ public class Footsteps : MonoBehaviour
         }
         else if (controller.currentSpeed < 10.0f)
         {
+            //run time
             if (Time.time - footTimer > 0.25f)
             {
                 ChangeSound(-1);

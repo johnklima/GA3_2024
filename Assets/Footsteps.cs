@@ -1,17 +1,30 @@
+using FMODUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Footsteps : MonoBehaviour
 {
+    
     public PlayerController controller;                 //set this in editor!!!
     public GameObject [] footsteps = new GameObject[4]; //set this in editor!!!
     public float hitDistance = 10;
     public GameObject theFootstep;                      //set this in editor!!!
 
     public float footTimer;
-    
+
+    public float sneakInterval = 1.0f;
+    public float sneakSpeed = 2.0f;
+
+    public float walkInterval = 0.5f;
+    public float walkSpeed = 6.0f;
+
+    public float runInterval = 0.25f;
+    public float runSpeed = 10.0f;
+
+    private float volume = 1.0f;
 
     private void Start()
     {
@@ -104,29 +117,36 @@ public class Footsteps : MonoBehaviour
         //set current sound to this sound
         theFootstep = footsteps[index];
 
+        //work on this, find a better way to reference
+        theFootstep.GetComponent<StudioEventEmitter>().EventInstance.setVolume(volume);
+
+
         //now check move speed for on/off toggle (I could also ask the animator what is playing)
-        if (controller.currentSpeed < 2.0f)
+        if (controller.currentSpeed < sneakSpeed)
         {
             //sneak time
-            if(Time.time - footTimer > 1.0f )
+            if(Time.time - footTimer > sneakInterval )
             {
-                ChangeSound(-1);
+                ChangeSound(-1);  //turn off the sound, it will play next frame
+                volume = 0.25f;
             }
         }
-        else if (controller.currentSpeed < 6.0f)
+        else if (controller.currentSpeed < walkSpeed)
         {
             //walk time
-            if (Time.time - footTimer > 0.5f)
+            if (Time.time - footTimer > walkInterval)
             {
                 ChangeSound(-1);
+                volume = 1.0f;
             }
         }
-        else if (controller.currentSpeed < 10.0f)
+        else if (controller.currentSpeed < runSpeed)
         {
             //run time
-            if (Time.time - footTimer > 0.25f)
+            if (Time.time - footTimer > runInterval)
             {
                 ChangeSound(-1);
+                volume = 1.0f;
             }
         }
 

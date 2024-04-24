@@ -170,12 +170,12 @@
 			<value>0</value>
 		</property>
 		<property name="curveShape">
-			<value>-0.925793588</value>
+			<value>-0.493198723</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{5ec20bd2-0790-42d8-a8ff-7ab24a684715}">
 		<property name="position">
-			<value>0.10000000000000002</value>
+			<value>0.029999999999999999</value>
 		</property>
 		<property name="value">
 			<value>1</value>

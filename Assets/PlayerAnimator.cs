@@ -6,7 +6,8 @@ using UnityEngine;
 public class PlayerAnimator : MonoBehaviour
 {
     Animator anim;
-    
+    public FootstepThirdPerson footstep;
+    private float volume = 1.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +25,7 @@ public class PlayerAnimator : MonoBehaviour
     public bool Walk()
     {
         ResetAnimParams();
-
+        volume = 1.0f;
         anim.SetBool("Walk", true);        
         return true;
 
@@ -33,7 +34,7 @@ public class PlayerAnimator : MonoBehaviour
     public bool Idle()
     {
         ResetAnimParams();
-
+        volume = 1.0f;
         anim.SetBool("Idle", true);        
         return true;
 
@@ -42,7 +43,7 @@ public class PlayerAnimator : MonoBehaviour
     public bool Sneak()
     {
         ResetAnimParams();
-
+        volume = 0.25f;
         anim.SetBool("Sneak", true);        
         return true;
 
@@ -51,7 +52,7 @@ public class PlayerAnimator : MonoBehaviour
     public bool Run()
     {
         ResetAnimParams();
-
+        volume = 1.0f;
         anim.SetBool("Run", true);
         return true;
 
@@ -69,5 +70,7 @@ public class PlayerAnimator : MonoBehaviour
     {
         Debug.Log("trigger sound");
 
+        if(footstep)
+            footstep.PlaySurfaceSound(volume);
     }
 }

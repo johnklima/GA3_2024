@@ -65,4 +65,9 @@ public class PlayerAnimator : MonoBehaviour
         anim.SetBool("Run", false);
 
     }
+    public void TriggerSound()
+    {
+        Debug.Log("trigger sound");
+
+    }
 }

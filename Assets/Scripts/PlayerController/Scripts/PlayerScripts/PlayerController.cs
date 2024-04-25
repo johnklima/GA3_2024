@@ -179,11 +179,14 @@ public class PlayerController : MonoBehaviour
 
 	public void Teleport(Transform destination) 
 	{
-		//place the player
-        transform.SetPositionAndRotation(destination.position, destination.rotation);
-        //and the camera 
-		cameraT.GetComponent<CameraContoller>().CameraReset(destination.position, destination.rotation);
+        //place the player
 
+        controller.Move(destination.position - transform.position);
+        transform.SetPositionAndRotation(destination.position, destination.rotation);
+        cameraT.SetPositionAndRotation(destination.position, destination.rotation);
+
+
+        Debug.Log("dest " + destination.name);
     }
 
 }
